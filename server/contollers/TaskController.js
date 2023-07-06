@@ -16,12 +16,12 @@ async function get(req, res) {
 	}
 }
 async function create(req, res) {
-	const { title, user } = req.body
+	const { title } = req.body
 	const queryObj = {}
 	const errors = []
 	try {
 		!title ? errors.push('title was not included') : queryObj.title = title
-		!user ? errors.push('user id was not included') : queryObj.user = user
+
 		if (errors.length !== 0) return res.status(500).json({ message: errors })
 
 		const task = await Task.create(queryObj)
