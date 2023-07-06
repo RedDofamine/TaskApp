@@ -9,7 +9,7 @@ const app = new express()
 
 app.use(express.json())
 
-app.use(taskRouter)
+app.use('/api', taskRouter)
 
 
 function start() {
