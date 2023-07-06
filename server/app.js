@@ -1,6 +1,9 @@
-import express from 'express'
+import { server } from './config/config.js'
 import DbConnect from './db/DbConnect.js'
 import taskRouter from './endpoints/taskRoutes.js'
+
+import express from 'express'
+
 
 const app = new express()
 
@@ -8,9 +11,10 @@ app.use(express.json())
 
 app.use(taskRouter)
 
+
 function start() {
 	DbConnect()
-	app.listen(3000, console.log(`App running on port 3000`))
+	app.listen(server.port, console.log(`App running on port ${server.port}`))
 }
 
 start()
